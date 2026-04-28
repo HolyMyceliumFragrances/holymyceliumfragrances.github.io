@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Mycelium Fragrances | Sacred Scents</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-red: #ff003c;
+            --neon-hot-pink: #ff007f;
+            --neon-green: #20ff7c;
+            --neon-blue: #0077ff; 
+            --neon-purple: #9d00ff;
+            --neon-light-pink: #ff66b2;
+            --dark-bg: #050505;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .glow-red:hover { box-shadow: 0 0 30px rgba(255, 0, 60, 0.2); }
+        .glow-hot-pink:hover { box-shadow: 0 0 40px rgba(255, 0, 127, 0.3); }
+        .glow-blue:hover { box-shadow: 0 0 30px rgba(0, 119, 255, 0.2); }
+        .glow-purple:hover { box-shadow: 0 0 40px rgba(157, 0, 255, 0.3); }
+        .glow-green:hover { box-shadow: 0 0 40px rgba(32, 255, 124, 0.3); }
+
+        .hero-gradient {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+        }
+
+        .neon-text-red { text-shadow: 0 0 10px var(--neon-red); color: var(--neon-red); }
+        .neon-text-hot-pink { text-shadow: 0 0 15px var(--neon-hot-pink); color: var(--neon-hot-pink); }
+        .neon-text-blue { text-shadow: 0 0 10px var(--neon-blue); color: var(--neon-blue); }
+        .neon-text-purple { text-shadow: 0 0 15px var(--neon-purple); color: var(--neon-purple); }
+        .neon-text-green { text-shadow: 0 0 15px var(--neon-green); color: var(--neon-green); }
+
+        .btn-purchase {
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .btn-purchase::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-purchase:hover::after {
+            left: 100%;
+        }
+
+        .cart-dot {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 8px;
+            height: 8px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            display: none;
+        }
+
+        .product-img-container {
+            height: 320px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px 8px 0 0;
+            background-color: #111;
+        }
+
+        .best-seller-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--neon-green);
+            color: black;
+            padding: 4px 12px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 2px;
+            z-index: 10;
+        }
+
+        #checkout-modal {
+            transition: opacity 0.5s ease;
+        }
+        .modal-content {
+            transform: scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        #checkout-modal.active {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+        #checkout-modal.active .modal-content {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-6 py-6 flex justify-between items-center bg-black/80 backdrop-blur-md border-b border-white/5">
+        <div class="text-xl font-cinzel tracking-widest font-bold">
+            HOLY <span class="text-white/40">MYCELIUM</span>
+        </div>
+        <div class="flex items-center gap-8">
+            <a href="#shop" class="hover:text-white transition text-[10px] uppercase tracking-widest font-bold">Collection</a>
+            <div class="relative cursor-pointer" onclick="toggleCart()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V72H40V56Zm0,144H40V88H216V200Zm-88-88a48,48,0,0,0-96,0,8,8,0,0,0,16,0,32,32,0,0,1,64,0,8,8,0,0,0,16,0Z"></path></svg>
+                <div id="cart-dot" class="cart-dot"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative h-screen flex items-center justify-center hero-gradient text-center px-4">
+        <div class="absolute inset-0 opacity-40" style="background-image: url('8fb12539-152a-4b16-a680-96c2768702de-c79a7f51-a5f3-4a81-bdd7-6ddebb0faab8~2.jpg'); background-size: cover; background-position: center; filter: blur(5px);"></div>
+        <div class="relative z-10 max-w-4xl">
+            <h1 class="text-5xl md:text-8xl mb-4 leading-tight tracking-tight">THE SACRAMENT <br><span class="text-white/60">OF SCENT</span></h1>
+            <p class="text-lg md:text-xl font-light text-white/50 mb-10 max-w-2xl mx-auto italic">
+                Forbidden essences and divine nectars. A cathedral of light and shadow for your senses.
+            </p>
+            <a href="#shop" class="px-10 py-4 border border-white/20 hover:bg-white hover:text-black transition-all duration-500 tracking-widest uppercase text-xs">
+                Enter the Sanctuary
+            </a>
+        </div>
+    </section>
+
+    <!-- Shop -->
+    <section id="shop" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="mb-20 text-center">
+            <h2 class="text-3xl font-cinzel mb-2 text-white/90 tracking-widest">The Full Collection</h2>
+            <div class="w-12 h-[1px] bg-white/20 mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-32">
+            <!-- 1. The Forbidden (GREEN) -->
+            <div class="glass-card glow-green rounded-xl overflow-hidden group relative">
+                <div class="best-seller-badge">Best Seller</div>
+                <div class="product-img-container" style="background-image: url('PXL_20260216_200742486.jpg');"></div>
+                <div class="p-8">
+                    <h3 class="text-2xl mb-1 neon-text-green uppercase tracking-widest">The Forbidden</h3>
+                    <p class="text-xs text-white/40 uppercase mb-4 tracking-widest">50ml Eau de Parfum</p>
+                    <p class="text-sm text-white/60 mb-6 font-light leading-relaxed">The secret core. Earthy patchouli mixed with sacred resins and forest floor.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold">$240</span>
+                        <button onclick="addToCart('The Forbidden', 240)" class="btn-purchase px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-tighter hover:bg-green-600 hover:text-white transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. The Sacrifice (RED) -->
+            <div class="glass-card glow-red rounded-xl overflow-hidden group">
+                <div class="product-img-container" style="background-image: url('8fb12539-152a-4b16-a680-96c2768702de-c79a7f51-a5f3-4a81-bdd7-6ddebb0faab8~2.jpg'); background-position: 10% center;"></div>
+                <div class="p-8">
+                    <h3 class="text-2xl mb-1 neon-text-red uppercase tracking-widest">The Sacrifice</h3>
+                    <p class="text-xs text-white/40 uppercase mb-4 tracking-widest">50ml Eau de Parfum</p>
+                    <p class="text-sm text-white/60 mb-6 font-light leading-relaxed">Incense, dark rose, and underground root network. Deeply grounding.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold">$240</span>
+                        <button onclick="addToCart('The Sacrifice', 240)" class="btn-purchase px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-tighter hover:bg-red-600 hover:text-white transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Lunar Crush (BLUE) -->
+            <div class="glass-card glow-blue rounded-xl overflow-hidden group">
+                <div class="product-img-container" style="background-image: url('PXL_20260216_201031902.jpg');"></div>
+                <div class="p-8">
+                    <h3 class="text-2xl mb-1 neon-text-blue uppercase tracking-widest">Lunar Crush</h3>
+                    <p class="text-xs text-white/40 uppercase mb-4 tracking-widest">50ml Eau de Parfum</p>
+                    <p class="text-sm text-white/60 mb-6 font-light leading-relaxed">Cold minerals, blue chamomile, and moonlit spores. Electric and ethereal.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold">$240</span>
+                        <button onclick="addToCart('Lunar Crush', 240)" class="btn-purchase px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-tighter hover:bg-blue-800 hover:text-white transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Divine Nectar (PURPLE) -->
+            <div class="glass-card glow-purple rounded-xl overflow-hidden group">
+                <div class="product-img-container" style="background-color: #111;"></div>
+                <div class="p-8">
+                    <h3 class="text-2xl mb-1 neon-text-purple uppercase tracking-widest">Divine Nectar</h3>
+                    <p class="text-xs text-white/40 uppercase mb-4 tracking-widest">50ml Eau de Parfum</p>
+                    <p class="text-sm text-white/60 mb-6 font-light leading-relaxed">Honeyed ambrosia, ancient resins, and crystalline light. Pure transcendence.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold">$240</span>
+                        <button onclick="addToCart('Divine Nectar', 240)" class="btn-purchase px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-tighter hover:bg-purple-800 hover:text-white transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Ultra Violet (PINK) -->
+            <div class="glass-card glow-hot-pink rounded-xl overflow-hidden group">
+                <div class="product-img-container" style="background-color: #111;"></div>
+                <div class="p-8">
+                    <h3 class="text-2xl mb-1 neon-text-hot-pink uppercase tracking-widest">Ultra Violet</h3>
+                    <p class="text-xs text-white/40 uppercase mb-4 tracking-widest">50ml Eau de Parfum</p>
+                    <p class="text-sm text-white/60 mb-6 font-light leading-relaxed">High-frequency ozone, fluorescent blooms, and neon rain. Vibrational scent.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold">$240</span>
+                        <button onclick="addToCart('Ultra Violet', 240)" class="btn-purchase px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-tighter hover:bg-pink-800 hover:text-white transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-96 bg-black z-[100] translate-x-full transition-transform duration-500 border-l border-white/10 p-8 flex flex-col">
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="font-cinzel text-xl uppercase tracking-widest">Sacred Cart</h2>
+            <button onclick="toggleCart()" class="text-white/40 hover:text-white text-3xl font-light">&times;</button>
+        </div>
+        <div id="cart-list" class="flex-grow overflow-y-auto space-y-6">
+            <p class="text-white/20 text-center italic text-sm mt-20">Your vessel is empty.</p>
+        </div>
+        <div class="mt-auto border-t border-white/10 pt-6">
+            <div class="flex justify-between items-center mb-6">
+                <span class="uppercase tracking-widest text-xs opacity-60">Offering Total</span>
+                <span id="cart-total" class="text-xl">$0</span>
+            </div>
+            <button id="checkout-btn" class="w-full py-4 bg-white text-black font-bold uppercase text-xs tracking-widest btn-purchase" onclick="showSacredModal()">
+                Begin Transmutation
+            </button>
+        </div>
+    </div>
+
+    <!-- Sacred Checkout Modal -->
+    <div id="checkout-modal" class="fixed inset-0 bg-black/95 flex items-center justify-center z-[200] opacity-0 pointer-events-none px-6">
+        <div class="modal-content glass-card p-12 text-center max-w-md rounded-2xl border-white/20 relative">
+            <button onclick="hideSacredModal()" class="absolute top-4 right-6 text-white/30 hover:text-white text-2xl">&times;</button>
+            
+            <div class="mb-8 flex justify-center">
+                <div class="w-16 h-16 border border-white/10 rounded-full flex items-center justify-center animate-pulse">
+                    <div class="w-2 h-2 bg-white rounded-full"></div>
+                </div>
+            </div>
+
+            <h3 class="font-cinzel text-3xl mb-4 uppercase tracking-[0.2em]">The Rite of Exchange</h3>
+            <p class="text-sm text-white/60 mb-10 leading-relaxed italic font-light">
+                Your selected essences are prepared. By proceeding, you begin the ritual of transmuting these divine fragments into physical form.
+            </p>
+            
+            <div class="space-y-4">
+                <button id="final-amen" class="w-full py-5 bg-white text-black font-bold uppercase text-xs tracking-[0.3em] hover:bg-gray-200 transition-all active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                    Continue
+                </button>
+                <p class="text-[10px] text-white/20 uppercase tracking-widest mt-4">Secure Checkout via Square Sanctuary</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const paymentLinks = {
+            "The Sacrifice": "https://square.link/u/j0x6PsDL",
+            "Lunar Crush": "https://square.link/u/IweZgz2L",
+            "Divine Nectar": "https://square.link/u/ImAOfJVy",
+            "Ultra Violet": "https://square.link/u/2cmeQ7eH",
+            "The Forbidden": "https://square.link/u/dVCHYWbk",
+            "multi": "https://square.link/u/dVCHYWbk" 
+        };
+
+        let cart = [];
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const cartList = document.getElementById('cart-list');
+        const cartTotal = document.getElementById('cart-total');
+        const cartDot = document.getElementById('cart-dot');
+        const checkoutModal = document.getElementById('checkout-modal');
+
+        function toggleCart() {
+            cartSidebar.classList.toggle('translate-x-full');
+        }
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+            if (cart.length > 0) cartDot.style.display = 'block';
+            
+            if (!cartSidebar.classList.contains('translate-x-0')) {
+                toggleCart();
+            }
+        }
+
+        function updateCart() {
+            if (cart.length === 0) {
+                cartList.innerHTML = '<p class="text-white/20 text-center italic text-sm mt-20">Your vessel is empty.</p>';
+                cartTotal.innerText = '$0';
+                cartDot.style.display = 'none';
+                return;
+            }
+            cartList.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                const div = document.createElement('div');
+                div.className = 'flex justify-between items-center border-b border-white/5 pb-4';
+                div.innerHTML = `
+                    <div>
+                        <p class="text-sm font-medium uppercase tracking-widest">${item.name}</p>
+                        <p class="text-xs opacity-40 font-bold">$${item.price}</p>
+                    </div>
+                    <button onclick="removeItem(${index})" class="text-[10px] text-red-500/50 uppercase tracking-tighter hover:text-red-500">Remove</button>`;
+                cartList.appendChild(div);
+            });
+            cartTotal.innerText = `$${total}`;
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function showSacredModal() {
+            if (cart.length === 0) return;
+            checkoutModal.classList.add('active');
+            
+            let finalUrl = paymentLinks.multi;
+            if (cart.length === 1) finalUrl = paymentLinks[cart[0].name] || paymentLinks.multi;
+            
+            document.getElementById('final-amen').onclick = () => {
+                const btn = document.getElementById('final-amen');
+                btn.innerText = "Transmuting...";
+                btn.style.opacity = "0.7";
+                setTimeout(() => {
+                    window.location.href = finalUrl;
+                }, 800);
+            };
+        }
+
+        function hideSacredModal() {
+            checkoutModal.classList.remove('active');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') hideSacredModal();
+        });
+    </script>
+</body>
+</html>
