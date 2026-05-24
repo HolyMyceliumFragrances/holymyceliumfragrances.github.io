@@ -136,8 +136,9 @@
         </div>
         <div class="flex items-center gap-8">
             <a href="#shop" class="hover:text-white transition text-[10px] uppercase tracking-widest font-bold">Collection</a>
-            <div class="relative cursor-pointer" onclick="toggleCart()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V72H40V56Zm0,144H40V88H216V200Zm-88-88a48,48,0,0,0-96,0,8,8,0,0,0,16,0,32,32,0,0,1,64,0,8,8,0,0,0,16,0Z"></path></svg>
+            <!-- Increased click area/padding for reliability -->
+            <div class="relative cursor-pointer p-2 -m-2 group" onclick="toggleCart()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" class="group-hover:text-white transition-colors duration-300"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V72H40V56Zm0,144H40V88H216V200Zm-88-88a48,48,0,0,0-96,0,8,8,0,0,0,16,0,32,32,0,0,1,64,0,8,8,0,0,0,16,0Z"></path></svg>
                 <div id="cart-dot" class="cart-dot"></div>
             </div>
         </div>
@@ -165,6 +166,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-32">
+            
             <!-- 1. The Forbidden (GREEN) -->
             <div class="glass-card glow-green rounded-xl overflow-hidden group relative">
                 <div class="best-seller-badge">Best Seller</div>
@@ -172,7 +174,7 @@
                 <div class="p-8">
                     <h3 class="text-2xl mb-1 neon-text-green uppercase tracking-widest">The Forbidden</h3>
                     <p class="text-xs text-white/40 uppercase mb-4 tracking-widest">50ml Eau de Parfum</p>
-                    <p class="text-sm text-white/60 mb-6 font-light leading-relaxed">The secret core. Earthy patchouli mixed with sacred resins and forest floor.</p>
+                    <p class="text-sm text-white/60 mb-6 font-light leading-relaxed">The Forbidden (green) hits like the apple you were never supposed to bite — crisp, juicy, dangerously addictive on skin.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-xl font-bold">$240</span>
                         <button onclick="addToCart('The Forbidden', 240)" class="btn-purchase px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-tighter hover:bg-green-600 hover:text-white transition">
@@ -182,7 +184,55 @@
                 </div>
             </div>
 
-            <!-- 2. The Sacrifice (RED) -->
+            <!-- 2. Divine Nectar (PURPLE) -->
+            <div class="glass-card glow-purple rounded-xl overflow-hidden group">
+                <div class="product-img-container" style="background-color: #111;"></div>
+                <div class="p-8">
+                    <h3 class="text-2xl mb-1 neon-text-purple uppercase tracking-widest">Divine Nectar</h3>
+                    <p class="text-xs text-white/40 uppercase mb-4 tracking-widest">50ml Eau de Parfum</p>
+                    <p class="text-sm text-white/60 mb-6 font-light leading-relaxed">Forbidden Nectar (purple) is pure exotic temptation that lingers for hours.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold">$240</span>
+                        <button onclick="addToCart('Divine Nectar', 240)" class="btn-purchase px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-tighter hover:bg-purple-800 hover:text-white transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Lunar Crush (BLUE) -->
+            <div class="glass-card glow-blue rounded-xl overflow-hidden group">
+                <div class="product-img-container" style="background-image: url('PXL_20260216_201031902.jpg');"></div>
+                <div class="p-8">
+                    <h3 class="text-2xl mb-1 neon-text-blue uppercase tracking-widest">Lunar Crush</h3>
+                    <p class="text-xs text-white/40 uppercase mb-4 tracking-widest">50ml Eau de Parfum</p>
+                    <p class="text-sm text-white/60 mb-6 font-light leading-relaxed">Lunar Crush (blue) feels like cool midnight rain on psychedelics… it pulls people toward you without trying.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold">$240</span>
+                        <button onclick="addToCart('Lunar Crush', 240)" class="btn-purchase px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-tighter hover:bg-blue-800 hover:text-white transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Ultra Violet (PINK) -->
+            <div class="glass-card glow-hot-pink rounded-xl overflow-hidden group">
+                <div class="product-img-container" style="background-color: #111;"></div>
+                <div class="p-8">
+                    <h3 class="text-2xl mb-1 neon-text-hot-pink uppercase tracking-widest">Ultra Violet</h3>
+                    <p class="text-xs text-white/40 uppercase mb-4 tracking-widest">50ml Eau de Parfum</p>
+                    <p class="text-sm text-white/60 mb-6 font-light leading-relaxed">High-frequency ozone, fluorescent blooms, and neon rain. Vibrational scent.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold">$240</span>
+                        <button onclick="addToCart('Ultra Violet', 240)" class="btn-purchase px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-tighter hover:bg-pink-800 hover:text-white transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. The Sacrifice (RED) -->
             <div class="glass-card glow-red rounded-xl overflow-hidden group">
                 <div class="product-img-container" style="background-image: url('8fb12539-152a-4b16-a680-96c2768702de-c79a7f51-a5f3-4a81-bdd7-6ddebb0faab8~2.jpg'); background-position: 10% center;"></div>
                 <div class="p-8">
@@ -198,53 +248,6 @@
                 </div>
             </div>
 
-            <!-- 3. Lunar Crush (BLUE) -->
-            <div class="glass-card glow-blue rounded-xl overflow-hidden group">
-                <div class="product-img-container" style="background-image: url('PXL_20260216_201031902.jpg');"></div>
-                <div class="p-8">
-                    <h3 class="text-2xl mb-1 neon-text-blue uppercase tracking-widest">Lunar Crush</h3>
-                    <p class="text-xs text-white/40 uppercase mb-4 tracking-widest">50ml Eau de Parfum</p>
-                    <p class="text-sm text-white/60 mb-6 font-light leading-relaxed">Cold minerals, blue chamomile, and moonlit spores. Electric and ethereal.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xl font-bold">$240</span>
-                        <button onclick="addToCart('Lunar Crush', 240)" class="btn-purchase px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-tighter hover:bg-blue-800 hover:text-white transition">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4. Divine Nectar (PURPLE) -->
-            <div class="glass-card glow-purple rounded-xl overflow-hidden group">
-                <div class="product-img-container" style="background-color: #111;"></div>
-                <div class="p-8">
-                    <h3 class="text-2xl mb-1 neon-text-purple uppercase tracking-widest">Divine Nectar</h3>
-                    <p class="text-xs text-white/40 uppercase mb-4 tracking-widest">50ml Eau de Parfum</p>
-                    <p class="text-sm text-white/60 mb-6 font-light leading-relaxed">Honeyed ambrosia, ancient resins, and crystalline light. Pure transcendence.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xl font-bold">$240</span>
-                        <button onclick="addToCart('Divine Nectar', 240)" class="btn-purchase px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-tighter hover:bg-purple-800 hover:text-white transition">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5. Ultra Violet (PINK) -->
-            <div class="glass-card glow-hot-pink rounded-xl overflow-hidden group">
-                <div class="product-img-container" style="background-color: #111;"></div>
-                <div class="p-8">
-                    <h3 class="text-2xl mb-1 neon-text-hot-pink uppercase tracking-widest">Ultra Violet</h3>
-                    <p class="text-xs text-white/40 uppercase mb-4 tracking-widest">50ml Eau de Parfum</p>
-                    <p class="text-sm text-white/60 mb-6 font-light leading-relaxed">High-frequency ozone, fluorescent blooms, and neon rain. Vibrational scent.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xl font-bold">$240</span>
-                        <button onclick="addToCart('Ultra Violet', 240)" class="btn-purchase px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-tighter hover:bg-pink-800 hover:text-white transition">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -285,7 +288,7 @@
             </p>
             
             <div class="space-y-4">
-                <button id="final-amen" class="w-full py-5 bg-white text-black font-bold uppercase text-xs tracking-[0.3em] hover:bg-gray-200 transition-all active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                <button id="final-amen" type="button" class="w-full py-5 bg-white text-black font-bold uppercase text-xs tracking-[0.3em] hover:bg-gray-200 transition-all active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
                     Continue
                 </button>
                 <p class="text-[10px] text-white/20 uppercase tracking-widest mt-4">Secure Checkout via Square Sanctuary</p>
@@ -309,9 +312,11 @@
         const cartTotal = document.getElementById('cart-total');
         const cartDot = document.getElementById('cart-dot');
         const checkoutModal = document.getElementById('checkout-modal');
+        const finalAmenBtn = document.getElementById('final-amen');
 
         function toggleCart() {
             cartSidebar.classList.toggle('translate-x-full');
+            cartSidebar.classList.toggle('translate-x-0');
         }
 
         function addToCart(name, price) {
@@ -319,7 +324,8 @@
             updateCart();
             if (cart.length > 0) cartDot.style.display = 'block';
             
-            if (!cartSidebar.classList.contains('translate-x-0')) {
+            // Only auto-open if not already open
+            if (cartSidebar.classList.contains('translate-x-full')) {
                 toggleCart();
             }
         }
@@ -342,7 +348,7 @@
                         <p class="text-sm font-medium uppercase tracking-widest">${item.name}</p>
                         <p class="text-xs opacity-40 font-bold">$${item.price}</p>
                     </div>
-                    <button onclick="removeItem(${index})" class="text-[10px] text-red-500/50 uppercase tracking-tighter hover:text-red-500">Remove</button>`;
+                    <button type="button" onclick="removeItem(${index})" class="text-[10px] text-red-500/50 uppercase tracking-tighter hover:text-red-500">Remove</button>`;
                 cartList.appendChild(div);
             });
             cartTotal.innerText = `$${total}`;
@@ -355,20 +361,35 @@
 
         function showSacredModal() {
             if (cart.length === 0) return;
-            checkoutModal.classList.add('active');
             
+            // Determine the target URL
             let finalUrl = paymentLinks.multi;
-            if (cart.length === 1) finalUrl = paymentLinks[cart[0].name] || paymentLinks.multi;
+            if (cart.length === 1) {
+                finalUrl = paymentLinks[cart[0].name] || paymentLinks.multi;
+            }
             
-            document.getElementById('final-amen').onclick = () => {
-                const btn = document.getElementById('final-amen');
-                btn.innerText = "Transmuting...";
-                btn.style.opacity = "0.7";
-                setTimeout(() => {
-                    window.location.href = finalUrl;
-                }, 800);
-            };
+            // Assign to data attribute
+            finalAmenBtn.dataset.url = finalUrl;
+            checkoutModal.classList.add('active');
         }
+
+        // Static listener for the "Continue" button
+        finalAmenBtn.addEventListener('click', () => {
+            const url = finalAmenBtn.dataset.url;
+            if (url) {
+                finalAmenBtn.innerText = "Transmuting...";
+                finalAmenBtn.style.opacity = "0.7";
+                
+                // Forces open in new tab, preventing homepage reload
+                window.open(url, '_blank');
+                
+                setTimeout(() => {
+                    hideSacredModal();
+                    finalAmenBtn.innerText = "Continue";
+                    finalAmenBtn.style.opacity = "1";
+                }, 500);
+            }
+        });
 
         function hideSacredModal() {
             checkoutModal.classList.remove('active');
