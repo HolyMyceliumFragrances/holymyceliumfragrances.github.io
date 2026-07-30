@@ -14,6 +14,7 @@
             --neon-blue: #0077ff; 
             --neon-purple: #9d00ff;
             --neon-light-pink: #ff66b2;
+            --neon-gold: #ffb300;
             --dark-bg: #050505;
         }
 
@@ -46,6 +47,34 @@
         .glow-blue:hover { box-shadow: 0 0 30px rgba(0, 119, 255, 0.2); }
         .glow-purple:hover { box-shadow: 0 0 40px rgba(157, 0, 255, 0.3); }
         .glow-green:hover { box-shadow: 0 0 40px rgba(32, 255, 124, 0.3); }
+        .glow-gold:hover { box-shadow: 0 0 40px rgba(255, 179, 0, 0.3); }
+
+        /* Dynamic Active Glows for Review Section */
+        .glow-active-green { box-shadow: 0 0 40px rgba(32, 255, 124, 0.3), inset 0 0 15px rgba(32, 255, 124, 0.1); border-color: rgba(32, 255, 124, 0.4); }
+        .glow-active-purple { box-shadow: 0 0 40px rgba(157, 0, 255, 0.3), inset 0 0 15px rgba(157, 0, 255, 0.1); border-color: rgba(157, 0, 255, 0.4); }
+        .glow-active-blue { box-shadow: 0 0 40px rgba(0, 119, 255, 0.3), inset 0 0 15px rgba(0, 119, 255, 0.1); border-color: rgba(0, 119, 255, 0.4); }
+        .glow-active-pink { box-shadow: 0 0 40px rgba(255, 0, 127, 0.3), inset 0 0 15px rgba(255, 0, 127, 0.1); border-color: rgba(255, 0, 127, 0.4); }
+        .glow-active-red { box-shadow: 0 0 40px rgba(255, 0, 60, 0.3), inset 0 0 15px rgba(255, 0, 60, 0.1); border-color: rgba(255, 0, 60, 0.4); }
+        .glow-active-gold { box-shadow: 0 0 40px rgba(255, 179, 0, 0.3), inset 0 0 15px rgba(255, 179, 0, 0.1); border-color: rgba(255, 179, 0, 0.4); }
+
+        /* Custom Scent Radio Buttons */
+        .scent-radio input:checked + div.bg-green-500 { box-shadow: 0 0 20px var(--neon-green); transform: scale(1.2); border-color: white; }
+        .scent-radio input:checked + div.bg-purple-500 { box-shadow: 0 0 20px var(--neon-purple); transform: scale(1.2); border-color: white; }
+        .scent-radio input:checked + div.bg-blue-500 { box-shadow: 0 0 20px var(--neon-blue); transform: scale(1.2); border-color: white; }
+        .scent-radio input:checked + div.bg-pink-500 { box-shadow: 0 0 20px var(--neon-hot-pink); transform: scale(1.2); border-color: white; }
+        .scent-radio input:checked + div.bg-red-500 { box-shadow: 0 0 20px var(--neon-red); transform: scale(1.2); border-color: white; }
+        .scent-radio input:checked + div.bg-yellow-500 { box-shadow: 0 0 20px var(--neon-gold); transform: scale(1.2); border-color: white; }
+
+        /* Futuristic Form Inputs */
+        .form-input {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.05);
+        }
 
         .hero-gradient {
             background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
@@ -56,6 +85,7 @@
         .neon-text-blue { text-shadow: 0 0 10px var(--neon-blue); color: var(--neon-blue); }
         .neon-text-purple { text-shadow: 0 0 15px var(--neon-purple); color: var(--neon-purple); }
         .neon-text-green { text-shadow: 0 0 15px var(--neon-green); color: var(--neon-green); }
+        .neon-text-gold { text-shadow: 0 0 15px var(--neon-gold); color: var(--neon-gold); }
 
         .btn-purchase {
             position: relative;
@@ -248,6 +278,101 @@
                 </div>
             </div>
 
+            <!-- 6. That Ishh (GOLD) -->
+            <div class="glass-card glow-gold rounded-xl overflow-hidden group">
+                <div class="product-img-container" style="background-color: #1a1500;"></div>
+                <div class="p-8">
+                    <h3 class="text-2xl mb-1 neon-text-gold uppercase tracking-widest">That Ishh</h3>
+                    <p class="text-xs text-white/40 uppercase mb-4 tracking-widest">50ml Eau de Parfum</p>
+                    <p class="text-sm text-white/60 mb-6 font-light leading-relaxed">The ultimate golden aura. Liquid confidence that effortlessly commands the room.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold">$240</span>
+                        <button onclick="addToCart('That Ishh', 240)" class="btn-purchase px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-tighter hover:bg-yellow-600 hover:text-white transition">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Resonance Ledger (Live Reviews) -->
+    <section id="reviews" class="py-24 px-6 max-w-4xl mx-auto border-t border-white/10">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-cinzel mb-2 text-white/90 tracking-widest">Resonance Ledger</h2>
+            <p class="text-sm text-white/40 italic font-light tracking-wide max-w-md mx-auto">Leave your frequency. Let others feel the shift before they enter the sanctuary.</p>
+            <div class="w-12 h-[1px] bg-white/20 mx-auto mt-6"></div>
+        </div>
+
+        <!-- Glowing Review Form -->
+        <div id="review-container" class="glass-card rounded-2xl p-8 md:p-12 transition-all duration-700 ease-in-out">
+            <h3 class="font-cinzel text-xl uppercase tracking-widest mb-8 text-white/80">Transmit Your Experience</h3>
+            
+            <form id="review-form" onsubmit="submitReview(event)" class="space-y-6">
+                <!-- Scent Selection -->
+                <div>
+                    <label class="block text-xs uppercase tracking-widest text-white/50 mb-4">Select Your Artifact</label>
+                    <div class="flex flex-wrap gap-6 items-center">
+                        <label class="scent-radio cursor-pointer group relative">
+                            <input type="radio" name="scent" value="The Forbidden" data-color="green" class="hidden" required onchange="updateFormGlow(this)">
+                            <div class="w-8 h-8 rounded-full bg-green-500 border-2 border-transparent transition-all duration-300 group-hover:scale-110"></div>
+                            <span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] uppercase tracking-wider text-green-400 opacity-0 group-hover:opacity-100 transition whitespace-nowrap">Forbidden</span>
+                        </label>
+                        <label class="scent-radio cursor-pointer group relative">
+                            <input type="radio" name="scent" value="Divine Nectar" data-color="purple" class="hidden" onchange="updateFormGlow(this)">
+                            <div class="w-8 h-8 rounded-full bg-purple-500 border-2 border-transparent transition-all duration-300 group-hover:scale-110"></div>
+                            <span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] uppercase tracking-wider text-purple-400 opacity-0 group-hover:opacity-100 transition whitespace-nowrap">Nectar</span>
+                        </label>
+                        <label class="scent-radio cursor-pointer group relative">
+                            <input type="radio" name="scent" value="Lunar Crush" data-color="blue" class="hidden" onchange="updateFormGlow(this)">
+                            <div class="w-8 h-8 rounded-full bg-blue-500 border-2 border-transparent transition-all duration-300 group-hover:scale-110"></div>
+                            <span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] uppercase tracking-wider text-blue-400 opacity-0 group-hover:opacity-100 transition whitespace-nowrap">Lunar</span>
+                        </label>
+                        <label class="scent-radio cursor-pointer group relative">
+                            <input type="radio" name="scent" value="Ultra Violet" data-color="pink" class="hidden" onchange="updateFormGlow(this)">
+                            <div class="w-8 h-8 rounded-full bg-pink-500 border-2 border-transparent transition-all duration-300 group-hover:scale-110"></div>
+                            <span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] uppercase tracking-wider text-pink-400 opacity-0 group-hover:opacity-100 transition whitespace-nowrap">Violet</span>
+                        </label>
+                        <label class="scent-radio cursor-pointer group relative">
+                            <input type="radio" name="scent" value="The Sacrifice" data-color="red" class="hidden" onchange="updateFormGlow(this)">
+                            <div class="w-8 h-8 rounded-full bg-red-500 border-2 border-transparent transition-all duration-300 group-hover:scale-110"></div>
+                            <span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] uppercase tracking-wider text-red-400 opacity-0 group-hover:opacity-100 transition whitespace-nowrap">Sacrifice</span>
+                        </label>
+                        <label class="scent-radio cursor-pointer group relative">
+                            <input type="radio" name="scent" value="That Ishh" data-color="gold" class="hidden" onchange="updateFormGlow(this)">
+                            <div class="w-8 h-8 rounded-full bg-yellow-500 border-2 border-transparent transition-all duration-300 group-hover:scale-110"></div>
+                            <span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] uppercase tracking-wider text-yellow-400 opacity-0 group-hover:opacity-100 transition whitespace-nowrap">That Ishh</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Input Fields -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-widest text-white/40 mb-2">Initiate (Your Name)</label>
+                        <input type="text" id="reviewer-name" required class="form-input w-full p-3 rounded-lg text-sm text-white placeholder-white/20" placeholder="e.g. Architect.09">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[10px] uppercase tracking-widest text-white/40 mb-2">The Shift (Your Experience)</label>
+                    <textarea id="review-text" required rows="4" class="form-input w-full p-3 rounded-lg text-sm text-white placeholder-white/20 resize-none" placeholder="Describe your experience..."></textarea>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" id="submit-review-btn" class="btn-purchase w-full md:w-auto px-10 py-3 bg-white text-black font-bold uppercase text-xs tracking-[0.2em] hover:bg-gray-200 transition-all">
+                        Imprint Resonance
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Live Review Feed -->
+        <div id="live-reviews" class="mt-16 space-y-6">
+            <div class="flex justify-center">
+                <div class="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
+            </div>
         </div>
     </section>
 
@@ -296,42 +421,247 @@
         </div>
     </div>
 
-    <script>
-        const paymentLinks = {
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- GLOBAL VARIABLES ---
+        window.paymentLinks = {
             "The Sacrifice": "https://square.link/u/j0x6PsDL",
             "Lunar Crush": "https://square.link/u/IweZgz2L",
             "Divine Nectar": "https://square.link/u/ImAOfJVy",
             "Ultra Violet": "https://square.link/u/2cmeQ7eH",
             "The Forbidden": "https://square.link/u/dVCHYWbk",
+            "That Ishh": "https://square.link/u/BQkhR2Jf",
             "multi": "https://square.link/u/dVCHYWbk" 
         };
 
-        let cart = [];
-        const cartSidebar = document.getElementById('cart-sidebar');
-        const cartList = document.getElementById('cart-list');
-        const cartTotal = document.getElementById('cart-total');
-        const cartDot = document.getElementById('cart-dot');
-        const checkoutModal = document.getElementById('checkout-modal');
-        const finalAmenBtn = document.getElementById('final-amen');
+        window.cart = [];
+        window.currentScentColor = '';
 
-        function toggleCart() {
+        // --- FIREBASE DATABASE SETUP ---
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'holy-mycelium-storefront';
+        let firebaseConfig = {};
+
+        // ⚠️ GITHUB PAGES SETUP:
+        // When you move this code to your GitHub Pages site, uncomment the block below 
+        // and paste your actual Firebase project config here to keep the reviews live!
+        /*
+        firebaseConfig = {
+          apiKey: "YOUR_API_KEY",
+          authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+          projectId: "YOUR_PROJECT_ID",
+          storageBucket: "YOUR_PROJECT_ID.appspot.com",
+          messagingSenderId: "YOUR_SENDER_ID",
+          appId: "YOUR_APP_ID"
+        };
+        */
+
+        try {
+            if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+                firebaseConfig = JSON.parse(__firebase_config);
+            }
+        } catch (e) {
+            console.error("Firebase config parse error", e);
+        }
+
+        let app, auth, db, currentUser = null;
+        let localReviewsCache = [];
+
+        if (Object.keys(firebaseConfig).length > 0) {
+            app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+
+            const initAuth = async () => {
+                try {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                } catch (err) {
+                    console.error("Auth Error:", err);
+                }
+            };
+            initAuth();
+
+            onAuthStateChanged(auth, (user) => {
+                currentUser = user;
+                if (user) loadReviews();
+            });
+        } else {
+            // Local fallback if no database is connected yet
+            document.getElementById('live-reviews').innerHTML = '<p class="text-white/40 text-sm text-center italic">Live feed disconnected. Database credentials required for permanent storage.</p>';
+        }
+
+        // --- REAL-TIME REVIEWS LOGIC ---
+        function loadReviews() {
+            if (!currentUser || !db) return;
+            const reviewsRef = collection(db, 'artifacts', appId, 'public', 'data', 'reviews');
+
+            onSnapshot(reviewsRef, (snapshot) => {
+                const reviews = [];
+                snapshot.forEach(doc => reviews.push({ id: doc.id, ...doc.data() }));
+
+                // Sort newest first
+                reviews.sort((a, b) => b.timestamp - a.timestamp);
+                localReviewsCache = reviews;
+                renderReviewsFeed();
+            }, (error) => {
+                console.error("Snapshot error:", error);
+            });
+        }
+
+        function renderReviewsFeed() {
+            const feed = document.getElementById('live-reviews');
+            feed.innerHTML = '';
+
+            if (localReviewsCache.length === 0) {
+                feed.innerHTML = '<p class="text-white/40 text-sm text-center italic">The ledger is silent. Be the first to leave a resonance.</p>';
+                return;
+            }
+
+            const tailwindColorMap = {
+                'green': { border: 'border-l-green-500', text: 'text-green-400' },
+                'purple': { border: 'border-l-purple-500', text: 'text-purple-400' },
+                'blue': { border: 'border-l-blue-500', text: 'text-blue-400' },
+                'pink': { border: 'border-l-pink-500', text: 'text-pink-400' },
+                'red': { border: 'border-l-red-500', text: 'text-red-400' },
+                'gold': { border: 'border-l-yellow-500', text: 'text-yellow-400' }
+            };
+
+            localReviewsCache.forEach(review => {
+                const colors = tailwindColorMap[review.scentColor] || tailwindColorMap['green'];
+
+                const date = new Date(review.timestamp);
+                let timeStr = date.toLocaleDateString();
+                const diffSecs = Math.floor((Date.now() - date.getTime()) / 1000);
+
+                if (diffSecs < 60) timeStr = 'Just Now';
+                else if (diffSecs < 3600) timeStr = Math.floor(diffSecs/60) + 'm ago';
+                else if (diffSecs < 86400) timeStr = Math.floor(diffSecs/3600) + 'h ago';
+                else if (diffSecs < 172800) timeStr = 'Yesterday';
+
+                const newReview = document.createElement('div');
+                newReview.className = `glass-card p-6 rounded-xl border-l-4 ${colors.border} glow-active-${review.scentColor} transition-all duration-500`;
+
+                newReview.innerHTML = `
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="font-cinzel text-lg tracking-wider">${escapeHTML(review.name)}</h4>
+                            <span class="text-[10px] ${colors.text} uppercase tracking-widest font-bold">${escapeHTML(review.scentName)}</span>
+                        </div>
+                        <span class="text-xs text-white/30">${timeStr}</span>
+                    </div>
+                    <p class="text-sm text-white/70 font-light leading-relaxed">${escapeHTML(review.text)}</p>
+                `;
+                feed.appendChild(newReview);
+            });
+        }
+
+        function escapeHTML(str) {
+            if (!str) return '';
+            return str.replace(/[&<>'"]/g, tag => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+            }[tag]));
+        }
+
+        window.updateFormGlow = function(radioInput) {
+            const container = document.getElementById('review-container');
+            const submitBtn = document.getElementById('submit-review-btn');
+
+            container.className = container.className.replace(/glow-active-\w+/g, '');
+            submitBtn.className = submitBtn.className.replace(/shadow-glow-\w+/g, '');
+
+            window.currentScentColor = radioInput.getAttribute('data-color');
+            container.classList.add(`glow-active-${window.currentScentColor}`);
+        }
+
+        window.submitReview = async function(e) {
+            e.preventDefault();
+
+            const nameInput = document.getElementById('reviewer-name').value;
+            const textInput = document.getElementById('review-text').value;
+            const scentInput = document.querySelector('input[name="scent"]:checked');
+
+            if (!scentInput) return;
+
+            const submitBtn = document.getElementById('submit-review-btn');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = "Transmitting...";
+            submitBtn.disabled = true;
+
+            const reviewData = {
+                name: nameInput,
+                text: textInput,
+                scentName: scentInput.value,
+                scentColor: scentInput.getAttribute('data-color'),
+                timestamp: Date.now()
+            };
+
+            if (currentUser && db) {
+                try {
+                    const reviewsRef = collection(db, 'artifacts', appId, 'public', 'data', 'reviews');
+                    await addDoc(reviewsRef, reviewData);
+                    resetReviewForm(submitBtn, originalText);
+                } catch(err) {
+                    console.error(err);
+                    submitBtn.innerText = "Transmission Failed";
+                    setTimeout(() => {
+                        submitBtn.innerText = originalText;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }
+            } else {
+                // Fallback simulation if no database is connected
+                localReviewsCache.unshift(reviewData);
+                renderReviewsFeed();
+                resetReviewForm(submitBtn, originalText);
+            }
+        }
+
+        function resetReviewForm(submitBtn, originalText) {
+            document.getElementById('review-form').reset();
+            const container = document.getElementById('review-container');
+            container.className = container.className.replace(/glow-active-\w+/g, '');
+
+            submitBtn.innerText = "Resonance Accepted";
+            submitBtn.classList.add('bg-green-500', 'text-white');
+
+            setTimeout(() => {
+                submitBtn.innerText = originalText;
+                submitBtn.classList.remove('bg-green-500', 'text-white');
+                submitBtn.disabled = false;
+            }, 3000);
+        }
+
+        // --- CART & MODAL LOGIC ---
+        window.toggleCart = function() {
+            const cartSidebar = document.getElementById('cart-sidebar');
             cartSidebar.classList.toggle('translate-x-full');
             cartSidebar.classList.toggle('translate-x-0');
         }
 
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            updateCart();
-            if (cart.length > 0) cartDot.style.display = 'block';
+        window.addToCart = function(name, price) {
+            window.cart.push({ name, price });
+            window.updateCart();
+            const cartDot = document.getElementById('cart-dot');
+            if (window.cart.length > 0) cartDot.style.display = 'block';
             
-            // Only auto-open if not already open
+            const cartSidebar = document.getElementById('cart-sidebar');
             if (cartSidebar.classList.contains('translate-x-full')) {
-                toggleCart();
+                window.toggleCart();
             }
         }
 
-        function updateCart() {
-            if (cart.length === 0) {
+        window.updateCart = function() {
+            const cartList = document.getElementById('cart-list');
+            const cartTotal = document.getElementById('cart-total');
+            const cartDot = document.getElementById('cart-dot');
+
+            if (window.cart.length === 0) {
                 cartList.innerHTML = '<p class="text-white/20 text-center italic text-sm mt-20">Your vessel is empty.</p>';
                 cartTotal.innerText = '$0';
                 cartDot.style.display = 'none';
@@ -339,7 +669,7 @@
             }
             cartList.innerHTML = '';
             let total = 0;
-            cart.forEach((item, index) => {
+            window.cart.forEach((item, index) => {
                 total += item.price;
                 const div = document.createElement('div');
                 div.className = 'flex justify-between items-center border-b border-white/5 pb-4';
@@ -348,56 +678,50 @@
                         <p class="text-sm font-medium uppercase tracking-widest">${item.name}</p>
                         <p class="text-xs opacity-40 font-bold">$${item.price}</p>
                     </div>
-                    <button type="button" onclick="removeItem(${index})" class="text-[10px] text-red-500/50 uppercase tracking-tighter hover:text-red-500">Remove</button>`;
+                    <button type="button" onclick="window.removeItem(${index})" class="text-[10px] text-red-500/50 uppercase tracking-tighter hover:text-red-500">Remove</button>`;
                 cartList.appendChild(div);
             });
             cartTotal.innerText = `$${total}`;
         }
 
-        function removeItem(index) {
-            cart.splice(index, 1);
-            updateCart();
+        window.removeItem = function(index) {
+            window.cart.splice(index, 1);
+            window.updateCart();
         }
 
-        function showSacredModal() {
-            if (cart.length === 0) return;
+        window.showSacredModal = function() {
+            if (window.cart.length === 0) return;
+            const finalAmenBtn = document.getElementById('final-amen');
+            const checkoutModal = document.getElementById('checkout-modal');
             
-            // Determine the target URL
-            let finalUrl = paymentLinks.multi;
-            if (cart.length === 1) {
-                finalUrl = paymentLinks[cart[0].name] || paymentLinks.multi;
+            let finalUrl = window.paymentLinks.multi;
+            if (window.cart.length === 1) {
+                finalUrl = window.paymentLinks[window.cart[0].name] || window.paymentLinks.multi;
             }
             
-            // Assign to data attribute
             finalAmenBtn.dataset.url = finalUrl;
             checkoutModal.classList.add('active');
         }
 
-        // Static listener for the "Continue" button
-        finalAmenBtn.addEventListener('click', () => {
+        window.hideSacredModal = function() {
+            document.getElementById('checkout-modal').classList.remove('active');
+        }
+
+        document.getElementById('final-amen').addEventListener('click', () => {
+            const finalAmenBtn = document.getElementById('final-amen');
             const url = finalAmenBtn.dataset.url;
             if (url) {
                 finalAmenBtn.innerText = "Transmuting...";
                 finalAmenBtn.style.opacity = "0.7";
-                
-                // Forces open in new tab, preventing homepage reload
                 window.open(url, '_blank');
-                
                 setTimeout(() => {
-                    hideSacredModal();
+                    window.hideSacredModal();
                     finalAmenBtn.innerText = "Continue";
                     finalAmenBtn.style.opacity = "1";
                 }, 500);
             }
         });
 
-        function hideSacredModal() {
-            checkoutModal.classList.remove('active');
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') hideSacredModal();
-        });
     </script>
 </body>
 </html>
